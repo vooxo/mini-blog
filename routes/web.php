@@ -14,9 +14,13 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('posts', PostController::class);
+
 Route::resource('posts.comments', CommentController::class)
     ->scoped(['comment' => 'post'])
-    ->only(['store', 'destroy']);
+    ->only(['store']);
+
+Route::delete('comments/{comment}', [CommentController::class, 'destroy'])
+    ->name('comments.destroy');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
