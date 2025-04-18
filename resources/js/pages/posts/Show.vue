@@ -86,28 +86,31 @@ function deleteComment(postId, commentId) {
             </div>
 
             <!-- New comment form -->
-            <form @submit.prevent="postComment">
-                <div class="p-4">
-                    <div class="grid gap-2">
-                        <h3 htmlFor="comment">Add your comment</h3>
-                        <textarea
-                            id="comment"
-                            type="text"
-                            class="mt-1 block w-full border-1 h-24"
-                            v-model="newCommentForm.comment"
-                            required
-                        />
-                        <InputError :message="newCommentForm.errors.comment" />
-                    </div>
+            <div v-if="$page.props.auth.user">
+                <form @submit.prevent="postComment">
+                    <div class="p-4">
+                        <div class="grid gap-2">
+                            <h3 htmlFor="comment">Add your comment</h3>
+                            <textarea
+                                id="comment"
+                                type="text"
+                                class="mt-1 block w-full border-1 h-24"
+                                v-model="newCommentForm.comment"
+                                required
+                            />
+                            <InputError :message="newCommentForm.errors.comment" />
+                        </div>
 
-                    <div class="py-4">
-                        <Button class="" :disabled="newCommentForm.processing">
-                            <LoaderCircle v-if="newCommentForm.processing" class="h-4 w-4 animate-spin" />
-                            Add comment
-                        </Button>
+                        <div class="py-4">
+                            <Button class="" :disabled="newCommentForm.processing">
+                                <LoaderCircle v-if="newCommentForm.processing" class="h-4 w-4 animate-spin" />
+                                Add comment
+                            </Button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+
+            </div>
 
             <!-- Comments -->
             <div v-if="post.comments && post.comments.length" id="comments" class="p-4">

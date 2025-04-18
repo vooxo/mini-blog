@@ -24,12 +24,14 @@ const props = defineProps({
         <div class="p-4">
 
             <!-- New post -->
-            <Link
-                :href="route('posts.create')"
-                class="inline-block rounded border p-2 bg-white text-black"
-            >
-                Add new post
-            </Link>
+            <div v-if="$page.props.auth.user">
+                <Link
+                    :href="route('posts.create')"
+                    class="inline-block rounded border p-2 bg-white text-black"
+                >
+                    Add new post
+                </Link>
+            </div>
 
             <!-- Post list -->
             <ul>
