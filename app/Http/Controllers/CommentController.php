@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCommentRequest;
+use App\Http\Requests\Comment\StoreCommentRequest;
 use App\Models\Comment;
 
 class CommentController extends Controller
