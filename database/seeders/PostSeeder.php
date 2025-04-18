@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
     {
         $users = User::all();
 
-        for ($i = 0; $i < 200; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $user = $users->random();
             Post::factory()->create([
                 'user_id' => $user->id
