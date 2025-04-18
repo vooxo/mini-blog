@@ -15,6 +15,16 @@ class Post extends Model
 
     public $timestamps = false;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'title',
+        'content'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
