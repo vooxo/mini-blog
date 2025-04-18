@@ -18,7 +18,7 @@ class CommentSeeder extends Seeder
         $posts = Post::all();
 
         foreach ($users as $user) {
-            $postsToComment = $posts->random(rand(1,10));
+            $postsToComment = $posts->random(rand(1,5));
 
             foreach ($postsToComment as $post) {
                 Comment::factory()->create([
