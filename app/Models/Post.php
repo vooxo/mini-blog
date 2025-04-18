@@ -13,6 +13,8 @@ class Post extends Model
     /** @use HasFactory<PostFactory> */
     use HasFactory;
 
+    public $timestamps = false;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
