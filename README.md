@@ -53,6 +53,18 @@ If you want to populate the database with some initial data, run the following c
 ./vendor/bin/sail artisan db:seed
 ```
 
+**Step 8: Install npm dependencies**
+
+```bash
+npm install
+```
+
+**Step 9: Build front-end assets**
+
+```bash
+npm run build
+```
+
 Open your web browser and navigate to `http://0.0.0.0` to access the project.
 
 The main functionality is within the "Blog" section.
