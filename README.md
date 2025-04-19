@@ -52,6 +52,12 @@ If you want to populate the database with some initial data, run the following c
 ```bash
 ./vendor/bin/sail artisan db:seed
 ```
+If you have seeded, there is one predefined admin user account:
+
+```
+Email: admin@example.com
+Password: password
+```
 
 **Step 8: Install npm dependencies**
 
@@ -67,6 +73,6 @@ npm run build
 
 Open your web browser and navigate to `http://0.0.0.0` to access the project.
 
-The main functionality is within the "Blog" section.
+The main Posts functionality is within the **Blog** section.
 
 That's it!
