@@ -10,6 +10,11 @@ import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
     {
+        title: 'Blog',
+        href: '/posts',
+        icon: LayoutGrid,
+    },
+    {
         title: 'Dashboard',
         href: '/dashboard',
         icon: LayoutGrid,
