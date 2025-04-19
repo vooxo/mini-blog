@@ -13,12 +13,7 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: '/dashboard',
         icon: LayoutGrid,
-    },
-    {
-        title: 'Posts',
-        href: '/posts',
-        icon: LayoutGrid,
-    },
+    }
 ];
 </script>
 

@@ -3,8 +3,6 @@
 import {Head, Link, router, useForm} from '@inertiajs/vue3';
 import AppLayout from "@/layouts/AppLayout.vue";
 import InputError from "@/components/InputError.vue";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {LoaderCircle} from "lucide-vue-next";
 
@@ -53,7 +51,40 @@ function deleteComment(commentId) {
 <template>
     <Head title="Post" />
 
-    <AppLayout>
+    <div class="flex flex-col items-left bg-[#FDFDFC] p-6 text-[#1b1b18] dark:bg-[#0a0a0a] lg:justify-center lg:p-8">
+        <header class="not-has-[nav]:hidden mb-6 w-full max-w-[335px] text-sm lg:max-w-4xl">
+            <nav class="flex items-left gap-4">
+                <Link
+                    :href="route('posts.index')"
+                    class="inline-block rounded-sm border px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                >
+                    Blog
+                </Link>
+                <Link
+                    v-if="$page.props.auth.user"
+                    :href="route('dashboard')"
+                    class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                >
+                    Dashboard
+                </Link>
+                <template v-else>
+                    <Link
+                        :href="route('login')"
+                        class="inline-block rounded-sm border px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                    >
+                        Log in
+                    </Link>
+                    <Link
+                        :href="route('register')"
+                        class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                    >
+                        Register
+                    </Link>
+                </template>
+            </nav>
+        </header>
+    </div>
+
         <div class="wrapper max-w-2xl">
 
             <!-- Post content -->
@@ -69,14 +100,14 @@ function deleteComment(commentId) {
                 <!-- Post actions -->
                 <div class="py-4">
                     <Button
-                        v-if="$page.props.auth.user && $page.props.auth.user.id == post.user.id"
+                        v-if="$page.props.auth.user && post.user && $page.props.auth.user.id == post.user.id"
                         @click="editPost(props.post.id)"
                         class="mx-2"
                     >
                         Edit post
                     </Button>
                     <Button
-                        v-if="$page.props.auth.user && $page.props.auth.user.id == post.user.id"
+                        v-if="$page.props.auth.user && post.user && $page.props.auth.user.id == post.user.id"
                         @click="deletePost(props.post.id)"
                         class="mx-2"
                     >
@@ -126,7 +157,7 @@ function deleteComment(commentId) {
                         <!-- Delete comment -->
                         <div class="pt-4">
                             <Button
-                                v-if="$page.props.auth.user && $page.props.auth.user.id == comment.user.id"
+                                v-if="$page.props.auth.user && comment.user && $page.props.auth.user.id == comment.user.id"
                                 @click="deleteComment(comment.id)"
                             >
                                 Delete comment
@@ -136,5 +167,4 @@ function deleteComment(commentId) {
                 </ul>
             </div>
         </div>
-    </AppLayout>
 </template>
