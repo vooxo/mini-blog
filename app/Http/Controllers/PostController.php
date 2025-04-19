@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Post\PostRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -73,6 +74,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if (Gate::denies('destroy-post', $post)) {
+            abort(403);
+        }
+
         $post->delete();
 
         return redirect()->route('posts.index');

@@ -106,7 +106,7 @@ function deleteComment(commentId) {
                         Edit post
                     </Button>
                     <Button
-                        v-if="$page.props.auth.user && post.user && $page.props.auth.user.id == post.user.id"
+                        v-if="$page.props.auth.user && post.user && $page.props.auth.user.id == post.user.id || $page.props.auth.user.is_admin"
                         @click="deletePost(props.post.id)"
                         class="mx-2"
                     >
@@ -156,7 +156,7 @@ function deleteComment(commentId) {
                         <!-- Delete comment -->
                         <div class="pt-4">
                             <Button
-                                v-if="$page.props.auth.user && comment.user && $page.props.auth.user.id == comment.user.id"
+                                v-if="$page.props.auth.user && comment.user && $page.props.auth.user.id == comment.user.id || $page.props.auth.user.is_admin"
                                 @click="deleteComment(comment.id)"
                             >
                                 Delete comment

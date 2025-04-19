@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Comment\StoreCommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
@@ -27,6 +28,10 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        if (Gate::denies('destroy-comment', $comment)) {
+            abort(403);
+        }
+
         $comment->delete();
 
         return back();
