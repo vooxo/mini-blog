@@ -16,12 +16,15 @@ Enter the project directory and install dependencies:
 ```bash
 composer install
 ```
+
 **Step 3: Setup Environment Variables**
 
 Copy the `.env.example` file to `.env` and update needed values:
 ```bash
 cp .env.example .env
 ```
+
+Update the `docker-compose.yml` if necessary.
 
 **Step 4: Generate Application Key**
 
@@ -42,6 +45,7 @@ Run the migrations to set up the database schema:
 ```bash
 ./vendor/bin/sail artisan migrate
 ```
+
 **Step 7: Seed the Database (Optional)**
 
 If you want to populate the database with some initial data, run the following command:
