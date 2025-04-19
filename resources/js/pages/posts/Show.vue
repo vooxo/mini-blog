@@ -38,7 +38,7 @@ function editPost(postId) {
     router.get(`/posts/${postId}/edit`);
 }
 
-function deleteComment(postId, commentId) {
+function deleteComment(commentId) {
     if (confirm('Delete comment?')) {
         router.delete(`/comments/${commentId}`, {
             onFinish: () => {
@@ -86,7 +86,7 @@ function deleteComment(postId, commentId) {
             </div>
 
             <!-- New comment form -->
-            <div v-if="$page.props.auth.user">
+            <div class="border-b">
                 <form @submit.prevent="postComment">
                     <div class="p-4">
                         <div class="grid gap-2">
@@ -109,7 +109,6 @@ function deleteComment(postId, commentId) {
                         </div>
                     </div>
                 </form>
-
             </div>
 
             <!-- Comments -->
@@ -117,7 +116,10 @@ function deleteComment(postId, commentId) {
                 <h3 class="text-2xl">Comments:</h3>
                 <ul>
                     <li v-for="comment in post.comments" :key="comment.id" class="p-4 border-b">
-                        <div>{{ comment.user.name }}</div>
+
+                        <span v-if="comment.user">{{ comment.user.name }}</span>
+                        <span v-else class="italic">Anonymous</span>
+
                         <div>{{ new Date(comment.created_at).toLocaleString() }}</div>
                         <div>{{ comment.comment }}</div>
 
@@ -125,7 +127,7 @@ function deleteComment(postId, commentId) {
                         <div class="pt-4">
                             <Button
                                 v-if="$page.props.auth.user && $page.props.auth.user.id == comment.user.id"
-                                @click="deleteComment(props.post.id, comment.id)"
+                                @click="deleteComment(comment.id)"
                             >
                                 Delete comment
                             </Button>
