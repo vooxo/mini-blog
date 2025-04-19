@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import {Head, Link, router, useForm} from '@inertiajs/vue3';
-import AppLayout from "@/layouts/AppLayout.vue";
 import InputError from "@/components/InputError.vue";
 import {Button} from "@/components/ui/button";
 import {LoaderCircle} from "lucide-vue-next";
@@ -121,7 +120,7 @@ function deleteComment(commentId) {
                 <form @submit.prevent="postComment">
                     <div class="p-4">
                         <div class="grid gap-2">
-                            <h3 htmlFor="comment">Add your comment</h3>
+                            <h3>Add your comment</h3>
                             <textarea
                                 id="comment"
                                 type="text"

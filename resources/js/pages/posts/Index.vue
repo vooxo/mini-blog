@@ -2,7 +2,6 @@
 
 import { type BreadcrumbItem } from '@/types';
 import {Head, Link} from '@inertiajs/vue3';
-import AppLayout from "@/layouts/AppLayout.vue";
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
