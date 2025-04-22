@@ -71,7 +71,7 @@ npm install
 npm run build
 ```
 
-Open your web browser and navigate to `http://0.0.0.0` to access the project.
+Open your web browser and navigate to `http://127.0.0.1` to access the project.
 
 The main Posts functionality is within the **Blog** section.
 
