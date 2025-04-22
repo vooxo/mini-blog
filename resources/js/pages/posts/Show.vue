@@ -118,7 +118,6 @@ function deleteComment(commentId) {
             <!-- New comment form -->
             <div class="border-b">
                 <form @submit.prevent="postComment">
-                    @csrf
                     <div class="p-4">
                         <div class="grid gap-2">
                             <h3>Add your comment</h3>
