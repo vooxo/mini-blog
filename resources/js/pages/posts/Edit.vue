@@ -70,6 +70,7 @@ const submit = () => {
         class="rounded-lg p-6 max-w-2xl"
     >
         <form @submit.prevent="submit">
+            @csrf
             <div class="space-y-6">
                 <div class="grid gap-2">
                     <Label htmlFor="title">Title</Label>
